@@ -60,3 +60,15 @@ function onSearchLoc(ev) {
     console.log(searchQuery)
     mapService.searchLoc(searchQuery)
 }
+
+
+function renderLocs() {
+    const locs = locService.getLocs()
+    var strHTMLs = locs.map(loc => `
+        <li>${loc.name}
+            <button class="remove-btn" onclick="onRemoveLocs('${loc.id}')">x</button>
+            <button class="go-btn" onclick="onPanToLocs('${loc.id}')">Go</button>
+        </li>
+    `)
+    document.querySelector('.locs').innerHTML = strHTMLs.join('')
+}

@@ -50,11 +50,6 @@ function remove(entityType, entityId) {
     })
 }
 
-// Private functions
-function _save(entityType, entities) {
-    localStorage.setItem(entityType, JSON.stringify(entities))
-}
-
 function makeId(length = 5) {
     var txt = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -63,3 +58,9 @@ function makeId(length = 5) {
     }
     return txt
 }
+
+// Private functions
+function _save(entityType, entities) {
+    localStorage.setItem(entityType, JSON.stringify(entities))
+}
+
