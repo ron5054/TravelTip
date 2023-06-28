@@ -60,10 +60,12 @@ function onSearchLoc(ev) {
     let searchQuery = document.querySelector('.search-input').value
     console.log(searchQuery)
     mapService.searchLoc(searchQuery)
+        .then(res => renderLoc(res))
+        .catch(err => console.log(err))
 }
 
-function renderLoc() {
-    document.querySelector('.current-location').innerHTML = 'holon'
+function renderLoc(res) {
+    document.querySelector('.current-location').innerHTML = res.results[0].formatted_address
 }
 
 function renderLocs() {

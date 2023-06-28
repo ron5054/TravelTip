@@ -60,9 +60,11 @@ function _connectGoogleApi() {
 function searchLoc(searchQuery) {
     const API_KEY = 'AIzaSyBA0bZs4BEDHIfyoa7qPQVxmXH8j8WbTEE'
     let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=${API_KEY}`
-    fetch(url)
+    return fetch(url)
         .then(res => res.json())
-        .then(data => panTo(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng))
+        .then(data => {
+            panTo(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng)
+            return data
+        })
         .catch(err => console.log(err))
-
 }
