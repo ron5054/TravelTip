@@ -62,3 +62,6 @@ function onSearchLoc(ev) {
     mapService.searchLoc(searchQuery)
 }
 
+// function renderLoc() {
+//     document.querySelector('.current-location').innerHTML = 'holon'
+// }
