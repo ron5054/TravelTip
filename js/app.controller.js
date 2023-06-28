@@ -62,6 +62,20 @@ function onSearchLoc(ev) {
     mapService.searchLoc(searchQuery)
 }
 
+<<<<<<< HEAD
 // function renderLoc() {
 //     document.querySelector('.current-location').innerHTML = 'holon'
 // }
+=======
+
+function renderLocs() {
+    const locs = locService.getLocs()
+    var strHTMLs = locs.map(loc => `
+        <li>${loc.name}
+            <button class="remove-btn" onclick="onRemoveLocs('${loc.id}')">x</button>
+            <button class="go-btn" onclick="onPanToLocs('${loc.id}')">Go</button>
+        </li>
+    `)
+    document.querySelector('.locs').innerHTML = strHTMLs.join('')
+}
+>>>>>>> 5effeb6bd2d27b0398950c81c9cf4d64ba823931

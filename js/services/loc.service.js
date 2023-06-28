@@ -1,12 +1,15 @@
 import { storageService } from './async-storage.service.js'
 
-
 export const locService = {
     getLocs,
     removeLoc,
     addLoc
 }
 
+LOC_KEY = 'locDB'
+
+// object example:
+// {id, name, lat, lng, weather, createdAt, updatedAt}
 
 
 let locs = [
@@ -23,30 +26,27 @@ function getLocs() {
 }
 
 
-// {id, name, lat, lng, weather, createdAt, updatedAt}
-
-
-const STORAGE_KEY = 'locDB'
-var gLocs = _createLocs()
-
-
-// function getLocs() {
-//     const locs = loadFromStorage(STORAGE_KEY)
-//     gLocs = (locs) ? locs : []
-//     return gLocs
-// }
 
 function removeLoc(locId) {
-    var locId = gLocs.findIndex(loc => locId === loc.id)
-    gLocs.splice(locId, 1)
-    _savelocsToStorage()
+    storageService.remove(LOC_KEY, locId)
 }
 
-function addLoc(name, lat, lng, weather, createdAt, updatedAt) {
-    const loc = _createLoc(name, lat, lng, weather, createdAt, updatedAt)
-    gLocs.push(loc)
-    _savePlacesToStorage()
+function get(locId) {
+    return storageService.get(LOC_KEY, locId)
 }
+
+function getEmptyLoc(name = '', score = 0) {
+    return { id: '', name, score }
+}
+
+function save(loc) {
+    if (loc.id) {
+        return storageService.put(LOC_KEY, loc)
+    } else {
+        return storageService.post(LOC_KEY, loc)
+    }
+}
+
 
 function _createLoc(name, lat, lng, weather, createdAt, updatedAt) {
     return {
@@ -66,8 +66,4 @@ function _createLocs() {
         _createLoc('Paris'),
         _createLoc('Berlin')
     ]
-}
-
-function _savePlacesToStorage() {
-    saveToStorage(STORAGE_KEY, gPlaces)
 }
