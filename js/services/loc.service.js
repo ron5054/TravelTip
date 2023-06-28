@@ -6,7 +6,7 @@ export const locService = {
     addLoc
 }
 
-LOC_KEY = 'locDB'
+const LOC_KEY = 'locDB'
 
 // object example:
 // {id, name, lat, lng, weather, createdAt, updatedAt}
@@ -45,6 +45,10 @@ function save(loc) {
     } else {
         return storageService.post(LOC_KEY, loc)
     }
+}
+
+function addLoc() {
+
 }
 
 
