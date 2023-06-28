@@ -9,12 +9,16 @@ window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 
+
+
 function onInit() {
     mapService.initMap()
         .then(() => {
             console.log('Map is ready')
         })
         .catch(() => console.log('Error: cannot init map'))
+
+    renderLocs()
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -67,12 +71,17 @@ function renderLoc() {
 }
 
 function renderLocs() {
-    const locs = locService.getLocs()
-    var strHTMLs = locs.map(loc => `
-        <li>${loc.name}
-            <button class="remove-btn" onclick="onRemoveLocs('${loc.id}')">x</button>
-            <button class="go-btn" onclick="onPanToLocs('${loc.id}')">Go</button>
-        </li>
-    `)
-    document.querySelector('.locs').innerHTML = strHTMLs.join('')
+
+    locService.getLocs().then(locs => {
+        console.log(locs)
+        var strHTMLs = locs.map(loc => `
+          <li>${loc.name}
+              <button class="remove-btn" onclick="onRemoveLocs('${loc.id}')">x</button>
+              <button class="go-btn" onclick="onPanToLocs('${loc.id}')">Go</button>
+          </li>
+        `)
+        document.querySelector('.locs').innerHTML = strHTMLs.join('')
+      }).catch(error => {
+        console.error('Error fetching locs:', error)
+      })
 }
