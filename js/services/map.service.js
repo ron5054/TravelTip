@@ -5,8 +5,6 @@ export const mapService = {
 }
 
 
-
-
 // Var that is used throughout this Module (not global)
 var gMap
 
