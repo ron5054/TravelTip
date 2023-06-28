@@ -3,7 +3,8 @@ export const storageService = {
     get,    // Read
     put,    // Update
     remove, // Delete
-    query,  // List 
+    query,  // List
+    makeId,
 }
 
 function query(entityType, delay = 500) {
@@ -20,7 +21,7 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    newEntity = JSON.parse(JSON.stringify(newEntity))    
+    newEntity = JSON.parse(JSON.stringify(newEntity))
     newEntity.id = _makeId()
     return query(entityType).then(entities => {
         entities.push(newEntity)
@@ -30,7 +31,7 @@ function post(entityType, newEntity) {
 }
 
 function put(entityType, updatedEntity) {
-    updatedEntity = JSON.parse(JSON.stringify(updatedEntity))    
+    updatedEntity = JSON.parse(JSON.stringify(updatedEntity))
     return query(entityType).then(entities => {
         const idx = entities.findIndex(entity => entity.id === updatedEntity.id)
         if (idx < 0) throw new Error(`Update failed, cannot find entity with id: ${entityId} in: ${entityType}`)
@@ -54,7 +55,7 @@ function _save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 
-function _makeId(length = 5) {
+function makeId(length = 5) {
     var txt = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     for (var i = 0; i < length; i++) {
