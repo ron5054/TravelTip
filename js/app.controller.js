@@ -58,5 +58,5 @@ function onSearchLoc(ev) {
     ev.preventDefault()
     let searchQuery = document.querySelector('.search-input').value
     console.log(searchQuery)
-    searchLoc(searchQuery)
+    mapService.searchLoc(searchQuery)
 }
