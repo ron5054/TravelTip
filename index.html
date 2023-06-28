@@ -12,11 +12,11 @@
     <header class="main-header-container main-layout full">
         <div class="main-header main-layout">
             <h1 class="logo">TravelTip Starter</h1>
-            <form action="" onsubmit="onSearchLocation()">
+            <form onsubmit="onSearchLocation(event)">
                 <input type="text">
                 <button>GO</button>
-                <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
             </form>
+            <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
         </div>
     </header>
     <section class="location-container">
@@ -52,8 +52,8 @@
     <p>Locations:
     <pre class="locs"></pre>
     </p>
-
-    <script src="lib/axios.js"></script>
+    <!-- 
+    <script src="lib/axios.js"></script> -->
     <script type="module" src="js/app.controller.js"></script>
 </body>
 

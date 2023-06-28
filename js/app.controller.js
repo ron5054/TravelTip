@@ -1,11 +1,13 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
+
 window.onload = onInit
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
+window.onSearchLoction = onSearchLocation
 
 function onInit() {
     mapService.initMap()
@@ -52,3 +54,11 @@ function onPanTo() {
     mapService.panTo(35.6895, 139.6917)
 }
 
+function onSearchLocation(ev) {
+    console.log('hi');
+    ev.preventDefault()
+    console.log(ev);
+    let searchQuery = document.querySelector('.search-input').value
+    // onSearchLocation(gSearchQuery)
+    console.log(searchQuery)
+}

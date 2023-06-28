@@ -24,11 +24,11 @@ const STORAGE_KEY = 'locDB'
 var gLocs = _createLocs()
 
 
-function getLocs() {
-    const locs = loadFromStorage(STORAGE_KEY)
-    gLocs = (locs)? locs : []
-    return gLocs
-}
+// function getLocs() {
+//     const locs = loadFromStorage(STORAGE_KEY)
+//     gLocs = (locs) ? locs : []
+//     return gLocs
+// }
 
 function removeLoc(locId) {
     var locId = gLocs.findIndex(loc => locId === loc.id)
