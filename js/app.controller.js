@@ -42,16 +42,17 @@ function onGetUserPos() {
     getPosition()
         .then(pos => {
             console.log('User position is:', pos.coords)
-            document.querySelector('.user-pos').innerText =
-                `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+            // document.querySelector('.user-pos').innerText =
+            //     `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+            onPanTo(pos.coords.latitude, pos.coords.longitude)
         })
         .catch(err => {
             console.log('err!!!', err)
         })
 }
-function onPanTo() {
+function onPanTo(lat, lan) {
     console.log('Panning the Map')
-    mapService.panTo(35.6895, 139.6917)
+    mapService.panTo(lat, lan)
 }
 
 function onSearchLoc(ev) {
@@ -60,3 +61,4 @@ function onSearchLoc(ev) {
     console.log(searchQuery)
     mapService.searchLoc(searchQuery)
 }
+

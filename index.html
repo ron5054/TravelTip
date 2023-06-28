@@ -16,7 +16,7 @@
                 <input class="search-input" type="text">
                 <button>GO</button>
             </form>
-            <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
+            <button onclick="onGetUserPos()" class="btn-user-pos">My Location</button>
         </div>
     </header>
     <section class="location-container">
@@ -46,12 +46,8 @@
     </section>
     <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
     <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
-    <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
 
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations:
-    <pre class="locs"></pre>
-    </p>
+
 
     <!-- <script src="lib/axios.js"></script> -->
     <script type="module" src="js/app.controller.js"></script>
