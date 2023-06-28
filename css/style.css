@@ -53,3 +53,8 @@
     width: 800px;
     background-color: chartreuse;
 }
+
+form button,
+.search-input {
+    height: 100%;
+}
