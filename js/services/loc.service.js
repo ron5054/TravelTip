@@ -1,8 +1,13 @@
+import {storageService} from './async-storage.service.js'
+
+
 export const locService = {
     getLocs,
     removeLoc,
     addLoc
 }
+
+
 
 const locs = [
     { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
@@ -20,15 +25,16 @@ function getLocs() {
 
 // {id, name, lat, lng, weather, createdAt, updatedAt}
 
+
 const STORAGE_KEY = 'locDB'
 var gLocs = _createLocs()
 
 
-function getLocs() {
-    const locs = loadFromStorage(STORAGE_KEY)
-    gLocs = (locs)? locs : []
-    return gLocs
-}
+// function getLocs() {
+//     const locs = loadFromStorage(STORAGE_KEY)
+//     gLocs = (locs)? locs : []
+//     return gLocs
+// }
 
 function removeLoc(locId) {
     var locId = gLocs.findIndex(loc => locId === loc.id)
@@ -44,7 +50,7 @@ function addLoc(name, lat, lng, weather, createdAt, updatedAt) {
 
 function _createLoc(name, lat, lng, weather, createdAt, updatedAt) {
     return {
-        id: makeId(),
+        id: storageService.makeId(),
         name,
         lat,
         lng,
