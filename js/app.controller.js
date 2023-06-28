@@ -62,11 +62,9 @@ function onSearchLoc(ev) {
     mapService.searchLoc(searchQuery)
 }
 
-<<<<<<< HEAD
-// function renderLoc() {
-//     document.querySelector('.current-location').innerHTML = 'holon'
-// }
-=======
+function renderLoc() {
+    document.querySelector('.current-location').innerHTML = 'holon'
+}
 
 function renderLocs() {
     const locs = locService.getLocs()
@@ -78,4 +76,3 @@ function renderLocs() {
     `)
     document.querySelector('.locs').innerHTML = strHTMLs.join('')
 }
->>>>>>> 5effeb6bd2d27b0398950c81c9cf4d64ba823931
