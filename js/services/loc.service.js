@@ -9,7 +9,7 @@ export const locService = {
 
 
 
-const locs = [
+let locs = [
     { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
     { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
 ]
@@ -30,11 +30,11 @@ const STORAGE_KEY = 'locDB'
 var gLocs = _createLocs()
 
 
-function getLocs() {
-    const locs = loadFromStorage(STORAGE_KEY)
-    gLocs = (locs) ? locs : []
-    return gLocs
-}
+// function getLocs() {
+//     const locs = loadFromStorage(STORAGE_KEY)
+//     gLocs = (locs) ? locs : []
+//     return gLocs
+// }
 
 function removeLoc(locId) {
     var locId = gLocs.findIndex(loc => locId === loc.id)
